@@ -32,12 +32,11 @@ jobs:
           pip install buildozer cython virtualenv
 
       - name: Build APK with Buildozer
-        # This will read your existing buildozer.spec, main.py, and background.jpg
-        run: buildozer android debug
+        # The 'yes |' automatically accepts all Android SDK licenses
+        run: yes | buildozer -v android debug
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: Eduhub
           path: bin/*.apk
-          
